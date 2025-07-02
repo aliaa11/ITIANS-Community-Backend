@@ -13,9 +13,12 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         //
-        $middleware->alias([
-            'admin'=> \App\Http\Middleware\admin::class
-        ]);
+        $middleware->prepend(Illuminate\Http\Middleware\HandleCors::class);
+
+    // باقي التعريفات متواصلة
+    $middleware->alias([
+        'admin'=> \App\Http\Middleware\admin::class
+    ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
