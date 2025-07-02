@@ -4,7 +4,7 @@ return [
     'paths' => ['api/*', 'sanctum/csrf-cookie', 'login', 'logout'],
 
     'allowed_methods' => ['*'],
-    'allowed_origins' => ['http://localhost:5173'], // Your frontend URL
+    'allowed_origins' => ['https://itians-community-frontend.vercel.app'],    
     'allowed_origins_patterns' => [],
     'allowed_headers' => ['*'],
     'exposed_headers' => [],
