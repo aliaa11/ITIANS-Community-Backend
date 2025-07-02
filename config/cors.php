@@ -4,7 +4,9 @@ return [
     'paths' => ['api/*', 'sanctum/csrf-cookie', 'login', 'logout'],
 
     'allowed_methods' => ['*'],
-    'allowed_origins' => ['https://itians-community-frontend.vercel.app'],    
+    'allowed_origins' => [
+        'https://itians-community-frontend.vercel.app',
+    ],
     'allowed_origins_patterns' => [],
     'allowed_headers' => ['*'],
     'exposed_headers' => [],
