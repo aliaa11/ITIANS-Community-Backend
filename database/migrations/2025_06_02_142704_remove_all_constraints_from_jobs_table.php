@@ -9,17 +9,27 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
-    {
-        Schema::table('jobs', function (Blueprint $table) {
-            DB::statement('ALTER TABLE jobs DROP CONSTRAINT IF EXISTS chk_job_type');
-            DB::statement('ALTER TABLE jobs DROP CONSTRAINT IF EXISTS chk_status');
-            DB::statement('ALTER TABLE jobs DROP CONSTRAINT IF EXISTS chk_job_location');
-            
-            // Drop any other potential constraints (add more if you have them)
-            DB::statement('ALTER TABLE jobs DROP CONSTRAINT IF EXISTS chk_status_correct');
-        });
-    }
+public function up(): void
+{
+    Schema::table('jobs', function (Blueprint $table) {
+        try {
+            DB::statement('ALTER TABLE jobs DROP CHECK chk_job_type');
+        } catch (\Exception $e) {}
+        
+        try {
+            DB::statement('ALTER TABLE jobs DROP CHECK chk_status');
+        } catch (\Exception $e) {}
+        
+        try {
+            DB::statement('ALTER TABLE jobs DROP CHECK chk_job_location');
+        } catch (\Exception $e) {}
+        
+        try {
+            DB::statement('ALTER TABLE jobs DROP CHECK chk_status_correct');
+        } catch (\Exception $e) {}
+    });
+}
+
 
     /**
      * Reverse the migrations.
