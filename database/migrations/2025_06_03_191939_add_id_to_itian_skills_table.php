@@ -7,21 +7,18 @@ use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
-    public function up(): void
-    {
-       
-        DB::statement('ALTER TABLE itian_skills DROP CONSTRAINT itian_skills_pkey');
+  public function up(): void
+{
+    DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+    DB::statement('ALTER TABLE itian_skills DROP PRIMARY KEY');
+    DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
-       
-        Schema::table('itian_skills', function (Blueprint $table) {
-            $table->id()->first(); 
-        });
+    Schema::table('itian_skills', function (Blueprint $table) {
+        $table->id()->first();
+        $table->unique(['itian_profile_id', 'skill_name']);
+    });
+}
 
-       
-        Schema::table('itian_skills', function (Blueprint $table) {
-            $table->unique(['itian_profile_id', 'skill_name']);
-        });
-    }
 
     public function down(): void
     {

@@ -12,3 +12,6 @@ Route::any('/test', function () {
     return 'ok';
 });
 
+Route::get('/', function () {
+    return response()->json(['message' => 'Laravel API Running ✅']);
+});

@@ -14,7 +14,6 @@ return new class extends Migration
             $table->dropColumn('reserved_at');
             $table->dropColumn('queue');
             $table->dropColumn('updated_at');
-            $table->timestamps();
         });
     }
 
@@ -23,7 +22,6 @@ return new class extends Migration
         Schema::table('jobs', function (Blueprint $table) {
             // Reverse the changes
             $table->longText('payload');
-            $table->dropTimestamps();
         });
     }
 };
