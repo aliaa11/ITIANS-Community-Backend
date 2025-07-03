@@ -1,3 +1,4 @@
+
 <?php
 
 use App\Mail\RegistrationRequestReviewed;
@@ -6,5 +7,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
      return view('welcome');
+});
+Route::any('/test', function () {
+    return 'ok';
 });
 
